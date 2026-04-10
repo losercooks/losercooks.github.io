@@ -1,0 +1,63 @@
+<div id="site-nav-overlay" class="overlay overlay--site-nav" aria-hidden="true" hidden></div>
+<div
+  id="site-nav-panel"
+  class="modal--site-nav"
+  role="dialog"
+  aria-modal="true"
+  aria-label="网站导航"
+  aria-hidden="true"
+  hidden
+>
+  <div class="modal--site-nav__inner">
+    {%- assign _nav_favicon_placeholder = '/assets/img/nav-favicon-placeholder.svg' | relative_url -%}
+    <h2 class="modal--site-nav__title">网站导航</h2>
+    {% if site.data.site_nav and site.data.site_nav.groups %}
+      {% for g in site.data.site_nav.groups %}
+        {% if g.title %}
+          <p class="modal--site-nav__group-title">{{ g.title }}</p>
+        {% endif %}
+        {% if g.links %}
+          <ul class="modal--site-nav__list">
+            {% for link in g.links %}
+              <li>
+                {%- assign _nav_u = link.url -%}
+                {%- assign _nav_show_icon = false -%}
+                {%- if _nav_u contains '://' -%}
+                  {%- assign _nav_host = _nav_u | split: '//' | last | split: '/' | first -%}
+                  {%- assign _nav_favicon = 'https://icons.duckduckgo.com/ip3/' | append: _nav_host | append: '.ico' -%}
+                  {%- assign _nav_show_icon = true -%}
+                {%- elsif _nav_u == '/' or _nav_u == '/archive/' or _nav_u == '/archive' -%}
+                  {%- comment -%} 首页、归档：不显示 favicon {%- endcomment -%}
+                {%- else -%}
+                  {%- assign _nav_favicon = '/assets/img/favicon.ico' | relative_url -%}
+                  {%- assign _nav_show_icon = true -%}
+                {%- endif -%}
+                {%- if _nav_show_icon -%}
+                <img
+                  class="modal--site-nav__favicon"
+                  src="{{ _nav_favicon | escape }}"
+                  alt=""
+                  width="16"
+                  height="16"
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden="true"
+                  onerror="this.onerror=null;this.src='{{ _nav_favicon_placeholder | xml_escape }}';"
+                />
+                {%- endif -%}
+                {% if link.url contains '://' %}
+                  <a href="{{ link.url | escape }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+                {% else %}
+                  <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <p class="modal--site-nav__empty">请在 <code>_data/site_nav.yml</code> 中配置链接。</p>
+    {% endif %}
+    <p class="modal--site-nav__hint">Esc / 点击遮罩 / 双击 Ctrl 关闭</p>
+  </div>
+</div>

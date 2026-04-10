@@ -1,0 +1,255 @@
+.modal--search__trigger,
+.modal--site-nav__trigger {
+  font: inherit;
+  font-family: monospace;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: $border-stroke;
+  border-radius: 0;
+  background: #fff;
+  color: $color-text;
+}
+
+.modal--search__trigger:hover,
+.modal--search__trigger:focus-visible,
+.modal--site-nav__trigger:hover,
+.modal--site-nav__trigger:focus-visible {
+  @include focus-ring($color-stroke, 2px, 1px);
+}
+
+body.modal--search--open,
+body.modal--site-nav--open {
+  overflow: hidden;
+}
+
+.modal--site-nav {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 90vw;
+  max-width: $max-w;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: 3;
+  box-sizing: border-box;
+  background: #fff;
+  color: $color-text;
+  border: $border-stroke;
+  padding: 0;
+}
+
+.modal--site-nav.is-open {
+  display: block;
+}
+
+.modal--site-nav__inner {
+  padding: 1.25rem 1.5rem 1rem;
+}
+
+.modal--site-nav__title {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0 0 1rem;
+}
+
+.modal--site-nav__group-title {
+  margin: 1rem 0 0.35rem;
+  font-size: 1em;
+}
+
+.modal--site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.25rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.modal--site-nav__list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.modal--site-nav__favicon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: block;
+  object-fit: contain;
+}
+
+.modal--site-nav__hint {
+  margin: 1rem 0 0;
+  padding-top: 0.75rem;
+  border-top: $border-stroke;
+  font-size: 0.85em;
+  color: $color-text;
+  opacity: 0.75;
+}
+
+.modal--site-nav__empty {
+  margin: 0;
+}
+
+/* —— 搜索弹层（独立样式，非 no-style 正文） —— */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  background: hsla(0, 0%, 100%, 0.75);
+  display: none;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.showOverlay.overlay {
+  display: block;
+}
+
+.modal--search {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  width: 90vw;
+  transform: translate3d(-50%, -50%, 0);
+  max-width: 550px;
+  z-index: 3;
+}
+
+.modal--search.is-open {
+  display: block;
+}
+
+.modal--search__backdrop {
+  padding: 0;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+}
+
+.modal--search.has-dropdown .modal--search__backdrop {
+  padding-bottom: 12px;
+}
+
+.modal--search .modal--search__inner {
+  display: none;
+  position: relative;
+}
+
+.modal--search.has-dropdown .modal--search__inner {
+  display: block;
+}
+
+.modal--search__count {
+  position: static;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 6px 20px 0;
+  margin: 6px 10px 0;
+  font-size: 0.9rem;
+  opacity: 0.5;
+  color: #fff;
+}
+
+.modal--search__count--error {
+  opacity: 1;
+  color: #ffc9bd;
+}
+
+.modal--search ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 0;
+  max-height: 360px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  /* Firefox：细滚动条 + 与深色面板协调的滑块/轨道色 */
+  scrollbar-width: thin;
+  scrollbar-color: hsla(0, 0%, 100%, 0.35) hsla(0, 0%, 100%, 0.08);
+}
+
+/* Chromium / Safari / Edge：自定义滚动条外观，贴近面板对比度 */
+.modal--search ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal--search ul::-webkit-scrollbar-track {
+  background: hsla(0, 0%, 100%, 0.06);
+  border-radius: 4px;
+}
+
+.modal--search ul::-webkit-scrollbar-thumb {
+  background: hsla(0, 0%, 100%, 0.28);
+  border-radius: 4px;
+}
+
+.modal--search ul::-webkit-scrollbar-thumb:hover {
+  background: hsla(0, 0%, 100%, 0.42);
+}
+
+.modal--search ul li {
+  height: 60px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 20px;
+  cursor: pointer;
+  color: hsla(0, 0%, 100%, 0.5);
+  margin: 10px;
+  border-radius: 3px;
+}
+
+.modal--search ul li.marked {
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+}
+
+.modal--search__input {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  padding: 14px 20px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+/* type=search 自带清除：仅把图标变为纯白，不改输入框其余样式（WebKit / Chromium） */
+.modal--search__input::-webkit-search-cancel-button {
+  filter: brightness(0) invert(1);
+  cursor: pointer;
+}
+
+@include bp-phone {
+  .modal--search__input {
+    font-size: clamp(1rem, 3.8vw, 1.25rem);
+    padding: 10px 14px;
+  }
+
+  .modal--search ul li {
+    font-size: 0.9375rem;
+  }
+
+  .modal--search__count {
+    font-size: 0.8rem;
+  }
+}

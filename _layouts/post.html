@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.date or page.categories and page.categories.size > 0 %}
+    <div class="post-meta">
+      {% if page.categories and page.categories.size > 0 %}
+        <span class="post-meta__cats" aria-label="分类">
+          {% for c in page.categories %}
+          <span class="post-meta__cat">{{ c }}</span>{% unless forloop.last %}<span class="post-meta__cat-sep"> · </span>{% endunless %}
+          {% endfor %}
+        </span>
+      {% endif %}
+      {% if page.date %}
+        {% if page.categories and page.categories.size > 0 %}<span class="post-meta__sep" aria-hidden="true">|</span>{% endif %}
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.date_format_post }}</time>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+  <div class="post-content">
+    {{ content }}
+  </div>
+  {%- comment -%}
+    site.posts 默认按日期降序：page.next 为更早一篇，page.previous 为更新一篇。
+  {%- endcomment -%}
+  <nav class="post-nav" aria-label="相邻文章与归档">
+    <div class="post-nav__row">
+      <div class="post-nav__prev">
+        {% if page.next %}
+          <a class="post-nav__link" href="{{ page.next.url | relative_url }}" rel="prev">上一篇<span class="post-nav__title">：{{ page.next.title }}</span></a>
+        {% else %}
+          <span class="post-nav__empty">没有更早的文章</span>
+        {% endif %}
+      </div>
+      <div class="post-nav__next">
+        {% if page.previous %}
+          <a class="post-nav__link" href="{{ page.previous.url | relative_url }}" rel="next">下一篇<span class="post-nav__title">：{{ page.previous.title }}</span></a>
+        {% else %}
+          <span class="post-nav__empty">没有更新的文章</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="post-nav__archive">
+      <span class="post-nav__crumb">
+        <a class="post-nav__link post-nav__link--archive" href="{{ '/' | relative_url }}">首页</a><span class="post-nav__crumb-sep" aria-hidden="true"> · </span><a class="post-nav__link post-nav__link--archive" href="{{ '/archive/' | relative_url }}">归档</a>
+      </span>
+    </div>
+  </nav>
+</article>

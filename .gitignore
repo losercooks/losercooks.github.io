@@ -1,0 +1,23 @@
+_site/
+.jekyll-metadata
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/bundle/
+vendor/cache/
+vendor/gems/
+vendor/ruby/
+
+# IDE/editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS / misc
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

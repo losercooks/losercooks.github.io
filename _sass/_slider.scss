@@ -1,0 +1,260 @@
+/* 轮播：在 .wrap 内置于 main 与 footer 之间；margin-top:auto 贴底 */
+.slider {
+  --slider-gap: #{$slider-gap};
+  --slider-pad-x: #{$slider-pad-x};
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  overflow: visible;
+  outline: none;
+}
+
+.wrap > .slider {
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-top: 1rem;
+}
+
+.slider:focus-visible {
+  @include focus-ring($color-stroke, 2px, 2px);
+}
+
+/* 单行 flex：左 10% | 图区 | 右 10%；stretch 使左右键与视口同高 */
+.slider__chrome {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 0;
+  gap: 0.5rem 0;
+}
+
+.slider__nav--prev,
+.slider__nav--next {
+  flex: 0 0 10%;
+  max-width: 10%;
+  min-width: 0;
+  align-self: stretch;
+  width: 10%;
+  box-sizing: border-box;
+}
+
+/* 占满中间剩余宽度，勿设 max-width，格宽才随屏宽拉满；min-width 防止 flex 子项塌成 0 */
+.slider__viewport {
+  flex: 1 1 0%;
+  min-width: 0;
+  height: auto;
+  overflow: hidden;
+  /* pan-y 在 iPad 横滑轮播时易与手势冲突；manipulation 允许平移并减少双击缩放延迟 */
+  touch-action: manipulation;
+  box-sizing: border-box;
+  padding-inline: var(--slider-pad-x);
+}
+
+.slider__track {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  will-change: transform;
+  gap: var(--slider-gap, #{$slider-gap});
+}
+
+/* 宽度由 JS 内联为「均分列宽」，与 .slider__frame 正方形共同决定行高；勿用 min-width:0 */
+.slider__item {
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* 正方形：padding-bottom 相对 .slider__item 宽度，比 aspect-ratio 在 flex 里更稳 */
+.slider__frame {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  overflow: hidden;
+  background: #eee;
+}
+
+/* 须高于 .site-main img（同特异性时后者会覆盖 height:auto，导致 cover 失效） */
+.site-main .slider__frame img,
+.slider__frame img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+
+/* 占满 10% 列宽；与视口同一行 stretch 后高度与图区一致，符号在格内 flex 居中；灯箱左右键同形 */
+.slider__nav,
+.slider__lightbox-nav {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0.1rem;
+  min-width: 0;
+  font-family: monospace;
+  font-size: 1.4rem;
+  line-height: 1;
+  background: #fff;
+  border: $border-stroke;
+  border-radius: 2px;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  height: auto;
+}
+
+.slider__nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.slider__lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.slider__lightbox[hidden] {
+  display: none !important;
+}
+
+.slider__lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: hsla(0, 0%, 100%, 0.92);
+  cursor: pointer;
+}
+
+.slider__lightbox-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
+.slider__lightbox-close {
+  align-self: flex-end;
+  font: inherit;
+  font-family: monospace;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.2rem 0.45rem;
+  border: $border-stroke;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+/* 灯箱主体：上行（左键|图|右键），下行说明；宽度与主内容栏一致 */
+.slider__lightbox-body {
+  --slider-col-w: min(100vw - 2rem, #{$max-w});
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: var(--slider-col-w);
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+/* 与 .slider__chrome 同构；--slider-col-w 继承自 .slider__lightbox-body */
+.slider__lightbox-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.5rem 1rem;
+  width: 100%;
+  min-height: 0;
+}
+
+/* 固定为 var(--slider-col-w) 的 10%，即主内容栏等效宽的 10% */
+.slider__lightbox-nav--prev,
+.slider__lightbox-nav--next {
+  flex: 0 0 calc(0.1 * var(--slider-col-w));
+  width: calc(0.1 * var(--slider-col-w));
+  max-width: calc(0.1 * var(--slider-col-w));
+  min-width: 0;
+  align-self: stretch;
+  box-sizing: border-box;
+}
+
+.slider__lightbox-stage {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 按钮行下方说明；宽度由 JS 与灯箱大图同宽，水平居中 */
+.slider__lightbox-caption {
+  align-self: center;
+  margin: 0;
+  margin-top: 0.65rem;
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.slider__lightbox-caption[hidden] {
+  display: none !important;
+}
+
+.slider__lightbox-img {
+  display: block;
+  max-height: 50vh;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+body.slider-lightbox-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider__track {
+    transition: none !important;
+  }
+}
+
+/* 非桌面（<1024px）：轮播/灯箱箭头满足最小触控尺寸 */
+@include bp-up-to-tablet {
+  .slider__nav,
+  .slider__lightbox-nav {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.35rem 0.5rem;
+  }
+}

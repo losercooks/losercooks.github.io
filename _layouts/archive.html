@@ -1,0 +1,8 @@
+---
+layout: default
+---
+<article class="archive">
+  <h1 class="archive-title">{{ page.title | default: "归档" }}</h1>
+  {%- comment -%} 与首页 `post_list` 同结构：日期 + 标题链接；列出全部文章（limit 取大值） {%- endcomment -%}
+  {% include post_list.html limit=999 %}
+</article>

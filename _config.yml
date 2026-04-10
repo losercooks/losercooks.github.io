@@ -1,0 +1,37 @@
+title: loser cooks - 谁输谁做饭
+description: Record the process of a novice programmer who used AI to create a website, a mini-program, and an agent without ever writing a single line of code by hand. The main content is to document the mistakes encountered
+lang: zh-CN
+# 用户站：仓库名 losercooks.github.io，站点根为 https://losercooks.github.io/，无子路径。
+url: "https://losercooks.github.io"
+baseurl: ""
+
+# 文章日期展示（post 页、post_list）；Rakefile 写 front matter 时同格式、东八区时间
+date_format_post: "%Y-%m-%d %H:%M:%S %z"
+# 破图/占位 fallback（default、slider 等处共用）
+media_placeholder_path: /assets/img/media-placeholder.svg
+
+# 与源码 UTF-8 一致，避免 Jekyll/Ruby 在非 UTF-8 环境下处理中文异常
+encoding: utf-8
+
+markdown: kramdown
+
+sass:
+  style: compressed
+
+# 不要写 permalink: pretty —— 该模式会生成 /:categories/:year/:month/:day/:title/，分类会进路径。
+# 文章、页面 URL 分别由下方 defaults 与各页 front matter 的 permalink 决定。
+
+# 文章：年-月-日/slug（单段日期，横线连接），不含 categories（与 Rakefile、slug 字段一致）
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: "/:year-:month-:day/:slug/"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - "*.gemspec"
+  - Rakefile
+  - .github

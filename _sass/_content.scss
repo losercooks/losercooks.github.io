@@ -1,0 +1,247 @@
+/* 首页菜单列表：根层 disc；嵌套按 .site-menu-list > li > ul 深度循环 circle / square / disc。文章子列表用 .post-list，与 .site-menu-list 共用基础与缩进 */
+.site-menu-list,
+.post-list {
+  list-style-position: outside;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.site-menu-list {
+  list-style-type: disc;
+}
+
+.site-menu-list > li > ul {
+  list-style-type: circle;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.site-menu-list > li > ul > li > ul {
+  list-style-type: square;
+}
+
+.site-menu-list > li > ul > li > ul > li > ul {
+  list-style-type: disc;
+}
+
+.post-list li {
+  margin: 0.4rem 0;
+}
+
+.archive-title {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0 0 1rem;
+}
+
+.site-main img,
+.site-main video,
+.site-main svg,
+.site-main canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 表格：全宽细线（窄屏仍可横向滚动） */
+.site-main table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.site-main .table-wrap {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table,
+th,
+td {
+  border: $border-stroke;
+  padding: 0.4rem;
+}
+
+/*
+ * 文章（.post）与独立页（.page）：
+ * - 共用版式主要由 .site-main（_layout）与 _base 全局标题/段落承担；首页 .home、归档 .archive 也在 .site-main 内，故 .site-main img/table 等不改为仅 .post-content/.page-content，否则会漏首页/归档。
+ * - 仅 post 使用 .post-meta。
+ * - 若样式只作用于文章/页面「标题区」或「正文区」，请写 .post-header, .page-header { … } 与 .post-content, .page-content { … }，避免 .post / .page 各写一套。
+ */
+
+.post-meta {
+  text-align: right;
+  font-size: 0.95em;
+  line-height: 1.35;
+  color: $color-text;
+  opacity: 0.88;
+}
+
+.post-meta__sep {
+  opacity: 0.55;
+  padding: 0 0.175em;
+}
+
+.post-meta__cats {
+  display: inline;
+}
+
+.post-meta__cat-sep {
+  opacity: 0.55;
+}
+
+.post-meta time {
+  font-size: 1em;
+  color: $color-text;
+}
+
+/* 文章页底：第一行 上一篇 / 下一篇；第二行 归档（Jekyll page.next=更早、page.previous=更新） */
+.post-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: $border-stroke;
+  font-size: 0.95em;
+  line-height: 1.35;
+}
+
+.post-nav__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.post-nav__prev,
+.post-nav__next {
+  flex: 1 1 auto;
+  max-width: 40%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.post-nav__prev {
+  text-align: left;
+}
+
+.post-nav__next {
+  text-align: right;
+}
+
+.post-nav__archive {
+  text-align: left;
+}
+
+.post-nav__crumb-sep {
+  opacity: 0.55;
+}
+
+.post-nav__link {
+  text-decoration: underline;
+}
+
+.post-nav__link--archive {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.post-nav__link--archive:hover,
+.post-nav__link--archive:focus-visible {
+  text-decoration: underline;
+}
+
+.post-nav__title {
+  font-weight: normal;
+}
+
+.post-nav__empty {
+  color: $color-text;
+  opacity: 0.45;
+}
+
+*:target {
+  background: #ff0;
+}
+
+blockquote {
+  font-style: italic;
+  border: $border-stroke;
+  padding: 1rem;
+  margin: 1rem 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+/* 行内 code：经典 Monokai 底 + 默认前景（与 Text 一致） */
+:not(pre) > code {
+  color: #f8f8f2;
+  background: #272822;
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+  border: 1px solid #49483e;
+  font-family: monospace;
+
+  span {
+    font-family: inherit;
+  }
+
+  @include monokai-rouge-tokens;
+}
+
+/* Rouge / Jekyll 代码块 */
+.highlight pre,
+pre.highlight {
+  margin: 0;
+}
+
+pre code,
+div.highlighter-rouge code,
+figure.highlight code {
+  display: block;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  padding: 1rem;
+  color: #f8f8f2;
+  background: #272822;
+  font-family: monospace;
+  font-size: 1em;
+  line-height: 1.4;
+
+  span {
+    font-family: inherit;
+  }
+}
+
+.highlight,
+.highlighter-rouge .highlight {
+  @include monokai-rouge-tokens;
+}
+
+/* 手机：以下须写在 .post-meta / h4–h6 / pre code 通用规则之后，否则会层叠失效（h1–h3 已在上方带 @media） */
+@include bp-phone {
+  .post-meta {
+    font-size: 0.88em;
+  }
+
+  h4,
+  h5,
+  h6 {
+    margin-top: 2rem;
+    line-height: 1.32;
+  }
+
+  pre code,
+  div.highlighter-rouge code,
+  figure.highlight code {
+    font-size: 0.8125em;
+    line-height: 1.4;
+  }
+}

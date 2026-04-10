@@ -1,0 +1,32 @@
+{%- comment -%}
+  全站列表：直接用 site.posts（Jekyll 已按 post.date 倒序，最新在前）。
+  分类：categories 内顺序不保证，仍按 date 降序排。
+{%- endcomment -%}
+{%- if include.category -%}
+  {%- assign posts = site.categories[include.category] | sort: 'date' | reverse -%}
+{%- else -%}
+  {%- assign posts = site.posts -%}
+{%- endif -%}
+
+{%- assign lim = include.limit | default: 999 -%}
+{%- if posts and posts.size > lim -%}
+  {%- assign limit_exceeded = true -%}
+{%- else -%}
+  {%- assign limit_exceeded = false -%}
+{%- endif -%}
+
+{%- if posts and posts.size > 0 -%}
+  <ul class="post-list">
+    {%- for post in posts limit: lim -%}
+      <li>
+        {{ post.date | date: site.date_format_post }}
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+    {%- endfor -%}
+    {%- if include.show_more and limit_exceeded -%}
+      <li>
+        <a href="{{ include.show_more_url | relative_url }}">{{ include.show_more_text | default: "More…" }}</a>
+      </li>
+    {%- endif -%}
+  </ul>
+{%- endif -%}

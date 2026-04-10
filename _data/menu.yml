@@ -1,0 +1,16 @@
+entries:
+  - title: 全部文章
+    post_list:
+      limit: 5
+      show_more: true
+      show_more_text: 查看归档…
+      show_more_url: /archive/
+
+  - title: 正在钻研的东西
+    entries:
+      - title: 一些开发，关于vibe coding
+        entries:
+          - title: 小游戏
+            url: /mini-game/
+          - title: 斯坦福小镇
+            url: /stanford-town/

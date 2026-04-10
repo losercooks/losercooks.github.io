@@ -1,0 +1,163 @@
+/* Rouge 官方 Monokai 主题配色：https://github.com/rouge-ruby/rouge/blob/master/lib/rouge/themes/monokai.rb */
+@mixin monokai-rouge-tokens {
+  /* Comment — :dimgrey */
+  .c,
+  .c1,
+  .cm,
+  .cp,
+  .cs {
+    color: #75715e;
+    font-style: italic;
+  }
+
+  .cp {
+    font-weight: 700;
+  }
+
+  /* Error — :carmine / :very_dark */
+  .err {
+    color: #960050;
+    background: #1e0010;
+  }
+
+  /* Keyword::* → :soft_cyan；Keyword::Namespace → :bright_pink；Operator → :bright_pink */
+  .k,
+  .kc,
+  .kd,
+  .kp,
+  .kr,
+  .kt {
+    color: #66d9ef;
+    font-weight: 700;
+  }
+
+  .kn {
+    color: #f92672;
+    font-weight: 700;
+  }
+
+  .o,
+  .ow {
+    color: #f92672;
+    font-weight: 700;
+  }
+
+  /* Literal::Number*, Literal::String::Escape — :light_violet */
+  .il,
+  .m,
+  .mb,
+  .mf,
+  .mh,
+  .mi,
+  .mo,
+  .mx {
+    color: #ae81ff;
+  }
+
+  /* Literal::String*（含 sx = String::Other）— :soft_yellow */
+  .s,
+  .sb,
+  .sc,
+  .sd,
+  .s2,
+  .se,
+  .sh,
+  .si,
+  .s1,
+  .sr,
+  .ss,
+  .sx {
+    color: #e6db74;
+  }
+
+  /* Name::Attribute — :bright_green */
+  .na {
+    color: #a6e22e;
+  }
+
+  /* Name::Class, Decorator, Exception, Function — :bright_green bold */
+  .nc,
+  .nd,
+  .ne,
+  .nf {
+    color: #a6e22e;
+    font-weight: 700;
+  }
+
+  /* Name::Constant — :soft_cyan */
+  .no {
+    color: #66d9ef;
+  }
+
+  /* Name::Tag — :bright_pink */
+  .nt {
+    color: #f92672;
+  }
+
+  /* Name::Label — :whitish bold */
+  .nl {
+    color: #f8f8f2;
+    font-weight: 700;
+  }
+
+  /* Name::Builtin, Namespace, Variable*, Text::Whitespace — :whitish */
+  .nb,
+  .nn,
+  .nv,
+  .vc,
+  .vg,
+  .vi,
+  .bp,
+  .n,
+  .nx,
+  .py {
+    color: #f8f8f2;
+  }
+
+  .ni {
+    color: #a6e22e;
+  }
+
+  /* Punctuation — 前景色 */
+  .p {
+    color: #f8f8f2;
+  }
+
+  /* Generic::Deleted / Inserted（diff）— 与主题 dimred / dimgreen 一致 */
+  .gd {
+    color: #fff;
+    background: #493131;
+  }
+
+  .gi {
+    color: #fff;
+    background: #324932;
+  }
+
+  .gh,
+  .gu {
+    color: #999;
+    font-weight: 700;
+  }
+
+  .go {
+    color: #888;
+  }
+
+  .gp,
+  .gs {
+    font-weight: 700;
+  }
+
+  .gr {
+    color: #aa0000;
+  }
+
+  .gt {
+    color: #aa0000;
+  }
+
+  .w {
+    color: #f8f8f2;
+  }
+}

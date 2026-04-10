@@ -1,0 +1,27 @@
+<div id="search-overlay" class="overlay" aria-hidden="true" hidden></div>
+<div
+  id="search-panel"
+  class="modal--search"
+  role="dialog"
+  aria-modal="true"
+  aria-label="搜索"
+  aria-hidden="true"
+  hidden
+>
+  <div class="modal--search__backdrop">
+    <input
+      type="search"
+      id="search-input"
+      class="modal--search__input"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="输入关键词…"
+      aria-autocomplete="list"
+      aria-controls="search-results"
+    />
+    <div class="modal--search__inner">
+      <span id="search-count" class="modal--search__count" aria-live="polite"></span>
+      <ul id="search-results" class="modal--search__results" role="listbox"></ul>
+    </div>
+  </div>
+</div>

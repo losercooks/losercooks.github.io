@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'zh-CN' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  {% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body data-search-json="{{ '/search.json' | relative_url }}">
+  <div class="wrap">
+    <header class="site-header site-header--toolbar">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <div class="site-header__actions">
+        <button type="button" id="site-nav-open-btn" class="modal--site-nav__trigger" aria-haspopup="dialog" aria-controls="site-nav-panel" aria-expanded="false">
+          导航
+        </button>
+        <button type="button" id="search-open-btn" class="modal--search__trigger" aria-haspopup="dialog" aria-controls="search-panel" aria-expanded="false">
+          搜索
+        </button>
+      </div>
+    </header>
+    <main class="site-main">
+      {{ content }}
+    </main>
+    {%- if page.layout == 'home' -%}
+      {% include slider.html %}
+    {%- endif -%}
+    <footer class="site-footer">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }} · 保留所有权利。</p>
+    </footer>
+  </div>
+  {% include site-nav.html %}
+  {% include search.html %}
+  {%- assign _media_placeholder = site.media_placeholder_path | relative_url -%}
+  <img
+    id="qrcode-cursor-follow"
+    class="qrcode-cursor-follow"
+    src="{{ '/assets/img/qrcode.jpg' | relative_url }}"
+    alt=""
+    width="192"
+    height="192"
+    hidden
+    decoding="async"
+    aria-hidden="true"
+    data-qrcode-fallback="{{ _media_placeholder | xml_escape }}"
+    onerror="this.onerror=null;var p=this.getAttribute('data-qrcode-fallback');if(p)this.setAttribute('src',p);"
+  />
+  <script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/qrcode-follow.js' | relative_url }}" defer></script>
+  {%- if page.layout == 'home' -%}
+  <script src="{{ '/assets/js/slider.js' | relative_url }}" defer></script>
+  {%- endif -%}
+</body>
+</html>

@@ -1,0 +1,10 @@
+---
+layout: null
+---
+[
+{%- comment -%} 与 post_list 一致：site.posts 已为日期倒序 {%- endcomment -%}
+{%- for post in site.posts -%}
+{%- unless forloop.first -%},{%- endunless -%}
+{"title":{{ post.title | jsonify }},"url":{{ post.url | jsonify }}}
+{%- endfor -%}
+]

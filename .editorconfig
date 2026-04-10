@@ -1,0 +1,11 @@
+# https://editorconfig.org — 统一 UTF-8 与换行，减少跨平台编码问题
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false

@@ -1,0 +1,89 @@
+{%- comment -%}
+  仅轮播 assets/img/slider/ 下图片（jpg/jpeg/png/webp/gif），按 path 排序后全部展示。
+  中间列内显张数与 slider_visible 一致；首屏该数量内 img 用 eager，其余 lazy。
+{%- endcomment -%}
+{%- assign slider_visible = 4 -%}
+{%- assign slider_files = site.static_files
+  | where_exp: "f", "f.path contains 'assets/img/slider/'"
+  | sort: "path"
+-%}
+{%- assign slider_idx = 0 -%}
+{%- assign captions = site.data.slider_captions -%}
+{%- capture slider_track_inner -%}
+{%- for f in slider_files -%}
+  {%- assign ext = f.extname | downcase -%}
+  {%- if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' or ext == '.gif' -%}
+    {%- assign cap = nil -%}
+    {%- if captions -%}
+      {%- assign cap = captions[f.name] -%}
+    {%- endif -%}
+    <div class="slider__item" role="listitem">
+      <div class="slider__frame">
+        <img
+          src="{{ f.path | relative_url }}"
+          alt="{% unless cap == blank %}{{ cap | xml_escape }}{% endunless %}"
+          {% unless cap == blank %}data-slider-caption="{{ cap | xml_escape }}"{% endunless %}
+          loading="{% if slider_idx < slider_visible %}eager{% else %}lazy{% endif %}"
+          decoding="async"
+        >
+      </div>
+    </div>
+    {%- assign slider_idx = slider_idx | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if slider_idx > 0 -%}
+{%- assign _slider_img_placeholder = site.media_placeholder_path | relative_url -%}
+<section
+  class="slider"
+  data-slider
+  data-slider-visible="{{ slider_visible }}"
+  aria-roledescription="carousel"
+  aria-label="图片轮播"
+>
+  <div class="slider__chrome">
+    <button type="button" class="slider__nav slider__nav--prev" data-slider-prev aria-label="上一屏">&lt;</button>
+    <div class="slider__viewport">
+      <div id="site-slider-track" class="slider__track" data-slider-track role="list">{{ slider_track_inner }}</div>
+    </div>
+    <button type="button" class="slider__nav slider__nav--next" data-slider-next aria-label="下一屏">&gt;</button>
+  </div>
+  <div
+    class="slider__lightbox"
+    data-slider-lightbox
+    hidden
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="放大浏览"
+  >
+    <div class="slider__lightbox-backdrop" data-slider-lightbox-backdrop tabindex="-1"></div>
+    <div class="slider__lightbox-inner">
+      <button type="button" class="slider__lightbox-close" data-slider-lightbox-close aria-label="关闭放大">×</button>
+      <div class="slider__lightbox-body">
+        <div class="slider__lightbox-row">
+          <button type="button" class="slider__lightbox-nav slider__lightbox-nav--prev" data-slider-lightbox-prev aria-label="上一张">&lt;</button>
+          <div class="slider__lightbox-stage">
+            <img
+              class="slider__lightbox-img"
+              src=""
+              alt=""
+              data-slider-lightbox-img
+              data-slider-img-placeholder="{{ _slider_img_placeholder | xml_escape }}"
+              decoding="async"
+              onerror="this.onerror=null;var p=this.getAttribute('data-slider-img-placeholder');if(p)this.setAttribute('src',p);"
+            />
+          </div>
+          <button type="button" class="slider__lightbox-nav slider__lightbox-nav--next" data-slider-lightbox-next aria-label="下一张">&gt;</button>
+        </div>
+        <div
+          class="slider__lightbox-caption"
+          data-slider-lightbox-caption
+          hidden
+          aria-live="polite"
+        ></div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}

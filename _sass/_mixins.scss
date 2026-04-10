@@ -1,0 +1,34 @@
+@mixin bp-phone {
+  @media (max-width: $breakpoint-phone-max) {
+    @content;
+  }
+}
+
+@mixin bp-up-to-tablet {
+  @media (max-width: $breakpoint-tablet-max) {
+    @content;
+  }
+}
+
+@mixin bp-tablet-only {
+  @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
+    @content;
+  }
+}
+
+@mixin bp-desktop-lg {
+  @media (min-width: $breakpoint-desktop-lg-min) {
+    @content;
+  }
+}
+
+@mixin bp-desktop-min {
+  @media (min-width: $breakpoint-desktop-min) {
+    @content;
+  }
+}
+
+@mixin focus-ring($color: $color-stroke, $width: 2px, $offset: 2px) {
+  outline: $width solid $color;
+  outline-offset: $offset;
+}

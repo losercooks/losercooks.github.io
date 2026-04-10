@@ -1,0 +1,18 @@
+---
+layout: default
+---
+{%- comment -%} 首页正文在 index.md；轮播在 default 布局中 main 与 footer 之间。 {%- endcomment -%}
+<article class="home">
+  {%- if site.description -%}
+    <p class="home-desc">{{ site.description }}</p>
+  {%- endif -%}
+  {%- if site.data.menu and site.data.menu.entries -%}
+    {%- include menu_list.html collection=site.data.menu.entries -%}
+  {%- endif -%}
+  {%- assign _home_extra = content | strip -%}
+  {%- if _home_extra != "" -%}
+  <div class="home-extra">
+    {{ content }}
+  </div>
+  {%- endif -%}
+</article>

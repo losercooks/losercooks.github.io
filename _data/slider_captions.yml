@@ -1,0 +1,11 @@
+# 首页轮播图说明：键为 assets/img/slider/ 下文件名，与 site.static_files 的 name 一致。
+archero.png: 《Archero》俯视角动作 Roguelike，摇杆移动、波次推进。
+bears-vs-art.png: 《Bears vs Art》涂鸦风策略塔防，在格子上布置单位抵御进攻。
+lucky-cat.jpg: 《Lucky Cat》刮刮乐放置类，升级刮奖尺寸、力度与幸运值。
+the-medieval-merchant.jpg: 《The Medieval Merchant》中世纪意大利商旅与城镇经营。
+antihero.jpg: 《Antihero》手绘风回合制战术，扮演反派扩张地盘。
+backpack-hero.jpg: 《Backpack Hero》背包整理 Roguelike，战斗中整理物品与合成。
+pawnbarian.jpg: 《Pawnbarian》国际象棋与 Roguelike 结合，用棋子行动清版。
+forager.jpeg: 《Forager》开放世界采集建造，像素风探索与自动化。
+crazy-pigeon.webp: 《Crazy Pigeon》休闲节奏类小品，操控鸽子跟着节拍闯关，画风魔性易上手。
+ping-pong-king.png: 极简火柴人乒乓球，黄底线稿风，左右大键操作；赛点 2:2 时的对决界面。

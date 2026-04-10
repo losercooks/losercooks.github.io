@@ -1,0 +1,23 @@
+/* 响应式断点（根字号 16px 时）：手机 <768 | 平板 768–1023 | 桌面 ≥1024 | 大屏桌面 ≥1280 */
+$breakpoint-phone-max: 47.99875em; /* 767.98px：手机横竖屏（常见视口宽 <768） */
+$breakpoint-tablet-min: 48em; /* 768px */
+$breakpoint-tablet-max: 63.99875em; /* 1023.98px；平板区间 [768, 1023] 与桌面 ≥1024 分界在 64em */
+$breakpoint-desktop-lg-min: 80em; /* 1280px（16px 根字号）：顶栏左右外扩 */
+$breakpoint-desktop-min: 64em; /* 1024px：与 tablet-max 衔接，桌面顶栏大字 */
+
+/* 主栏与灯箱中间列：与 .wrap 同宽 */
+$max-w: 640px;
+
+/* 正文与 UI 描边（no-style 风格：黑字、蓝链、细黑边框） */
+$color-text: #000;
+$color-link: #00e;
+$color-link-visited: #551a8b;
+$color-stroke: #000;
+$border-stroke: thin solid $color-stroke;
+
+/*
+ * 轮播列缝与图区左右内边距（px）。
+ * 须与 assets/js/slider.js 顶部 SLIDER_GAP_FALLBACK_PX（及 gapPx / cssVarPx 回退）一致。
+ */
+$slider-gap: 8px;
+$slider-pad-x: 8px;

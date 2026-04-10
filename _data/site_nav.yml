@@ -1,0 +1,92 @@
+# 双击 Ctrl 打开的「网站导航」链接（可分组）
+groups:
+  - title: 本站
+    links:
+      - title: 首页
+        url: /
+      - title: 归档
+        url: /archive/
+
+  - title: 自媒体
+    links:
+      - title: 微信公众平台
+        url: https://mp.weixin.qq.com
+      - title: 抖音开发者平台
+        url: https://developer.open-douyin.com/
+      - title: 小红书
+        url: https://www.xiaohongshu.com
+      - title: B站
+        url: https://www.bilibili.com
+
+  - title: 开发
+    links:
+      - title: github
+        url: https://github.com/losercooks
+      - title: chatgpt
+        url: https://chatgpt.com/
+      - title: openai
+        url: https://openai.com/
+      - title: anthropic
+        url: https://www.anthropic.com/
+      - title: gemini
+        url: https://gemini.google.com/
+      - title: claude
+        url: https://claude.ai/
+      - title: stability
+        url: https://stability.ai/
+      - title: perplexity
+        url: https://www.perplexity.ai/
+      - title: grok
+        url: https://grok.com/
+      - title: duckduckgo
+        url: https://duckduckgo.com
+      - title: javascript
+        url: https://www.javascript.com/
+      - title: typescript
+        url: https://www.typescriptlang.org/
+      - title: python
+        url: https://www.python.org/
+      - title: java
+        url: https://www.java.com/
+      - title: c++
+        url: https://www.cplusplus.com/
+      - title: stackoverflow
+        url: https://stackoverflow.com/
+      - title: 稀土掘金
+        url: https://juejin.cn/
+      - title: V2EX
+        url: https://www.v2ex.com/
+      - title: GSAP
+        url: https://gsap.com/
+      - title: Airbnb Design
+        url: https://airbnb.design/
+      - title: Dribbble
+        url: https://dribbble.com/
+      - title: Behance
+        url: https://www.behance.net/
+      - title: Pinterest
+        url: https://www.pinterest.com/
+      - title: Google Fonts
+        url: https://fonts.google.com/
+      - title: placehold
+        url: https://placehold.co/
+
+  - title: 游戏
+    links:
+      - title: 愤怒的小鸟
+        url: https://www.angrybirds.com/
+      - title: sellanycodes
+        url: https://sellanycodes.com/
+      - title: OpenGameArt
+        url: https://opengameart.org/
+      - title: Kenney
+        url: https://kenney.nl/
+      - title: itch.io
+        url: https://itch.io/
+      - title: Thinky Games
+        url: https://thinkygames.com/
+      - title: Puzzledorf
+        url: https://www.puzzledorf.com/
+      - title: Craftpix
+        url: https://craftpix.net/
+

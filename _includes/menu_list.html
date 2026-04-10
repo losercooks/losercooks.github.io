@@ -1,0 +1,28 @@
+<ul class="site-menu-list">
+  {%- for item in include.collection -%}
+    <li class="site-menu-item">
+      {%- if item.url -%}
+        {%- if item.url contains '://' -%}
+          <a href="{{ item.url | escape }}" rel="noopener noreferrer">{{ item.title }}</a>
+        {%- else -%}
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {%- endif -%}
+      {%- else -%}
+        {{ item.title }}
+      {%- endif -%}
+      {%- if item.post_list -%}
+        {%- include post_list.html
+          category=item.post_list.category
+          limit=item.post_list.limit
+          show_more=item.post_list.show_more
+          show_more_text=item.post_list.show_more_text
+          show_more_url=item.post_list.show_more_url
+        -%}
+      {%- endif -%}
+      {%- if item.entries -%}
+        {%- include menu_list.html collection=item.entries -%}
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+</ul>
+
