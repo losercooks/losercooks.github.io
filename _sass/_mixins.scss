@@ -1,29 +1,29 @@
 @mixin bp-phone {
-  @media (max-width: $breakpoint-phone-max) {
+  @media (max-width: $bp-phone-max) {
     @content;
   }
 }
 
 @mixin bp-up-to-tablet {
-  @media (max-width: $breakpoint-tablet-max) {
+  @media (max-width: $bp-tablet-max) {
     @content;
   }
 }
 
 @mixin bp-tablet-only {
-  @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
+  @media (min-width: $bp-tablet-min) and (max-width: $bp-tablet-max) {
     @content;
   }
 }
 
 @mixin bp-desktop-lg {
-  @media (min-width: $breakpoint-desktop-lg-min) {
+  @media (min-width: $bp-desktop-lg-min) {
     @content;
   }
 }
 
 @mixin bp-desktop-min {
-  @media (min-width: $breakpoint-desktop-min) {
+  @media (min-width: $bp-desktop-min) {
     @content;
   }
 }

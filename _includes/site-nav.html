@@ -29,7 +29,7 @@
                 {%- elsif _nav_u == '/' or _nav_u == '/archive/' or _nav_u == '/archive' -%}
                   {%- comment -%} 首页、归档：不显示 favicon {%- endcomment -%}
                 {%- else -%}
-                  {%- assign _nav_favicon = '/assets/img/favicon.ico' | relative_url -%}
+                  {%- assign _nav_favicon = '/favicon.ico' | relative_url -%}
                   {%- assign _nav_show_icon = true -%}
                 {%- endif -%}
                 {%- if _nav_show_icon -%}

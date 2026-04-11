@@ -11,46 +11,48 @@ groups:
     links:
       - title: 微信公众平台
         url: https://mp.weixin.qq.com
-      - title: 抖音开发者平台
+      - title: 微信表情商店
+        url: https://sticker.weixin.qq.com/cgi-bin/mmemoticonwebnode-bin/pages/home
+      - title: 抖音开放平台
         url: https://developer.open-douyin.com/
       - title: 小红书
         url: https://www.xiaohongshu.com
+      - title: 聚光
+        url: https://ad.xiaohongshu.com/
       - title: B站
         url: https://www.bilibili.com
+      - title: 油管
+        url: https://www.youtube.com/
+      - title: Vimeo
+        url: https://vimeo.com/
 
   - title: 开发
     links:
-      - title: github
+      - title: GitHub
         url: https://github.com/losercooks
-      - title: chatgpt
+      - title: ChatGPT
         url: https://chatgpt.com/
-      - title: openai
+      - title: OpenAI
         url: https://openai.com/
-      - title: anthropic
+      - title: Anthropic
         url: https://www.anthropic.com/
-      - title: gemini
+      - title: Google Gemini
         url: https://gemini.google.com/
-      - title: claude
+      - title: Claude
         url: https://claude.ai/
-      - title: stability
+      - title: Stability AI
         url: https://stability.ai/
-      - title: perplexity
+      - title: Perplexity
         url: https://www.perplexity.ai/
-      - title: grok
+      - title: Grok
         url: https://grok.com/
-      - title: duckduckgo
+      - title: DuckDuckGo
         url: https://duckduckgo.com
-      - title: javascript
+      - title: JavaScript.com
         url: https://www.javascript.com/
-      - title: typescript
-        url: https://www.typescriptlang.org/
-      - title: python
-        url: https://www.python.org/
-      - title: java
-        url: https://www.java.com/
-      - title: c++
+      - title: C++ 参考（cplusplus.com）
         url: https://www.cplusplus.com/
-      - title: stackoverflow
+      - title: Stack Overflow
         url: https://stackoverflow.com/
       - title: 稀土掘金
         url: https://juejin.cn/
@@ -58,6 +60,19 @@ groups:
         url: https://www.v2ex.com/
       - title: GSAP
         url: https://gsap.com/
+      - title: Google Fonts
+        url: https://fonts.google.com/
+      - title: placehold.co
+        url: https://placehold.co/
+      - title: DEV Community
+        url: https://dev.to/
+      - title: Tetrisly
+        url: https://tetrisly.com/
+      - title: Creative Commons
+        url: https://creativecommons.org/
+
+  - title: 设计灵感
+    links:
       - title: Airbnb Design
         url: https://airbnb.design/
       - title: Dribbble
@@ -66,16 +81,40 @@ groups:
         url: https://www.behance.net/
       - title: Pinterest
         url: https://www.pinterest.com/
-      - title: Google Fonts
-        url: https://fonts.google.com/
-      - title: placehold
-        url: https://placehold.co/
+      - title: Unsplash
+        url: https://unsplash.com/
+      - title: Eagle
+        url: https://cn.eagle.cool/
+      - title: Muz.li
+        url: https://muz.li/cn/
+      - title: 站酷
+        url: https://www.zcool.com.cn/
+      - title: Designspiration
+        url: https://www.designspiration.com/
+      - title: Awwwards
+        url: https://www.awwwards.com/
+      - title: Medium
+        url: https://medium.com/
+      - title: Doooor
+        url: https://www.doooor.com/
+      - title: UI Design Daily
+        url: https://www.uidesigndaily.com/
+      - title: Flat UI Colors
+        url: https://flatuicolors.com/
+      - title: UI Colors
+        url: https://uicolors.app/
+      - title: Color Hunt
+        url: https://colorhunt.co/
+      - title: UI8
+        url: https://ui8.net/category/themes
+      - title: UI Gradients
+        url: https://uigradients.com/
 
   - title: 游戏
     links:
       - title: 愤怒的小鸟
         url: https://www.angrybirds.com/
-      - title: sellanycodes
+      - title: SellAnyCodes
         url: https://sellanycodes.com/
       - title: OpenGameArt
         url: https://opengameart.org/
@@ -89,6 +128,5 @@ groups:
         url: https://www.puzzledorf.com/
       - title: Craftpix
         url: https://craftpix.net/
-      - title: Interfaceingame
+      - title: Interface in Game
         url: https://interfaceingame.com/
-

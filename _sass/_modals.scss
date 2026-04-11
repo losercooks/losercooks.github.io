@@ -29,7 +29,6 @@ body.modal--site-nav--open {
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   width: 90vw;
-  max-width: $max-w;
   max-height: 85vh;
   overflow-y: auto;
   z-index: 3;
@@ -38,6 +37,10 @@ body.modal--site-nav--open {
   color: $color-text;
   border: $border-stroke;
   padding: 0;
+
+  @include bp-desktop-min {
+    width: 60vw;
+  }
 }
 
 .modal--site-nav.is-open {

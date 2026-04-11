@@ -11,6 +11,7 @@ vendor/ruby/
 # IDE/editor
 .idea/
 .vscode/
+.cursor/
 *.swp
 *.swo
 *~
@@ -21,3 +22,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Local-only tooling (GitHub Pages does not run Rake)
+Rakefile
