@@ -42,9 +42,11 @@ bundle exec jekyll build
 Windows PowerShell 里建议不要把命令写成 `cd ... && ...` 的链式写法；更稳的是：
 
 ```powershell
-Set-Location e:\aurislee\AurisLee\losercooks
+Set-Location D:\path\to\losercooks.github.io
 bundle exec jekyll serve
 ```
+
+把路径换成你本机克隆下来的项目根目录。
 
 ## 3. 本仓库里你该认识的目录
 
@@ -96,6 +98,6 @@ bundle exec rake post TITLE="英文-slug" CATEGORY=笔记
 | Windows 下中文乱码 | 仓库已设 `encoding: utf-8`，编辑器与终端也尽量用 UTF-8 |
 | `bundle install` 访问 rubygems 超时 | 换网络/代理；或临时使用镜像把依赖装完并生成 `Gemfile.lock`（最终以 lock 为准） |
 
----
+## 8. 总结
 
-总结：**`bundle install` 一次 → 日常 `bundle exec jekyll serve` 写文预览 → 满意后推送到 GitHub Pages（本仓库用“从分支构建”）。** 先把本地跑通，再折腾域名即可。
+**`bundle install` 一次 → 日常 `bundle exec jekyll serve` 写文预览 → 满意后推送到 GitHub Pages（本仓库用“从分支构建”）。** 先把本地跑通，再折腾域名即可。
