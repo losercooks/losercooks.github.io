@@ -1,96 +1,127 @@
 /* Dark Mode Skin - Final, High-Specificity Override */
 body.dark-mode {
 
-    // --- Globals & Layout ---
-    background-color: #1c1c1c;
+  // --- Globals & Layout ---
+  background-color: #1c1c1c;
+  color: #c5c5c5;
+
+  .site-header, .site-footer {
+    border-color: #333;
+  }
+  .site-footer { color: #999; }
+  .site-title { color: #c5c5c5; }
+  hr { background-color: #444; }
+
+  // --- Modal Triggers & Overlay ---
+  .modal--search__trigger,
+  .modal--site-nav__trigger {
+    background: #333;
     color: #c5c5c5;
-  
-    .site-header, .site-footer {
-      border-color: #333;
-    }
-    .site-footer { color: #999; }
-    .site-title { color: #c5c5c5; }
-    hr { background-color: #444; }
-  
-    // --- Modal Triggers & Overlay ---
-    .modal--search__trigger,
-    .modal--site-nav__trigger {
-      background: #333;
-      color: #c5c5c5;
-      border-color: #555;
-    }
-    .overlay { background: rgba(0, 0, 0, 0.75); }
-  
-    // --- Navigation Modal (Inverted from white to dark) ---
-    .modal--site-nav {
-      background: #222;
-      color: #c5c5c5;
-      border-color: #444;
-    }
-    .modal--site-nav__title,
-    .modal--site-nav__group-title {
-      color: #e0e0e0;
-    }
-    .modal--site-nav a { // Targeting links inside the nav
-        color: #d0d0d0;
-        border-bottom: 1px solid #383838;
-        &:hover, &:focus {
-          background-color: #003c7a;
-          color: #fff;
-        }
-    }
-    .modal--site-nav__hint {
-      color: #999;
-      border-top-color: #444;
-    }
-  
-    // --- Search Modal (Harmonized to the dark theme) ---
-    .modal--search__backdrop {
-      background: #222; // Harmonized background
-    }
-    .modal--search__input {
-      color: #e0e0e0;
-    }
-    .modal--search__count {
-      color: #888;
-      opacity: 1;
-    }
-    .modal--search__count--error {
-        color: #ff8a8a;
-    }
-    .modal--search ul li {
-      color: #c5c5c5;
+    border-color: #555;
+  }
+  .overlay { background: rgba(0, 0, 0, 0.75); }
+
+  // --- Navigation Modal (Inverted from white to dark) ---
+  .modal--site-nav {
+    background: #222;
+    color: #c5c5c5;
+    border-color: #444;
+  }
+  .modal--site-nav__title,
+  .modal--site-nav__group-title {
+    color: #e0e0e0;
+  }
+  .modal--site-nav a { // Targeting links inside the nav
+      color: #d0d0d0;
       border-bottom: 1px solid #383838;
-      &.marked {
-        background-color: #003c7a; // Consistent highlight
+      &:hover, &:focus {
+        background-color: #003c7a;
         color: #fff;
       }
-    }
-  
-    // --- Markdown Content ---
-    h1, h2, h3, h4, h5, h6 {
-      color: #e0e0e0;
-      border-bottom-color: #444;
-    }
-    blockquote {
-      color: #aaa;
-      border-left-color: #555;
-      background-color: #222;
-    }
-    code:not([class]) {
-      background-color: #333;
-      color: #ffb3b3;
-      border: 1px solid #444;
-    }
-    .highlight, pre { background-color: #272822; }
-    table, th, td { border-color: #555; }
-    th { background-color: #2a2a2a; }
-    kbd {
-      background-color: #333;
-      color: #c5c5c5;
-      border: 1px solid #555;
-      border-bottom-color: #666;
-      box-shadow: inset 0 -1px 0 #111;
+  }
+  .modal--site-nav__hint {
+    color: #999;
+    border-top-color: #444;
+  }
+
+  // --- Search Modal (Harmonized to the dark theme) ---
+  .modal--search__backdrop {
+    background: #222; // Harmonized background
+  }
+  .modal--search__input {
+    color: #e0e0e0;
+  }
+  .modal--search__count {
+    color: #888;
+    opacity: 1;
+  }
+  .modal--search__count--error {
+      color: #ff8a8a;
+  }
+  .modal--search ul li {
+    color: #c5c5c5;
+    border-bottom: 1px solid #383838;
+    &.marked {
+      background-color: #003c7a; // Consistent highlight
+      color: #fff;
     }
   }
-  
+
+  // --- Markdown Content ---
+  h1, h2, h3, h4, h5, h6 {
+    color: #e0e0e0;
+    border-bottom-color: #444;
+  }
+  blockquote {
+    color: #aaa;
+    border-left-color: #555;
+    background-color: #222;
+  }
+  code:not([class]) {
+    background-color: #333;
+    color: #ffb3b3;
+    border: 1px solid #444;
+  }
+  .highlight, pre { background-color: #272822; }
+  table, th, td { border-color: #555; }
+  th { background-color: #2a2a2a; }
+  kbd {
+    background-color: #333;
+    color: #c5c5c5;
+    border: 1px solid #555;
+    border-bottom-color: #666;
+    box-shadow: inset 0 -1px 0 #111;
+  }
+
+  // --- Slider & Lightbox Overrides ---
+  .slider__nav,
+  .slider__lightbox-nav {
+    background: #333;
+    color: #c5c5c5;
+    border-color: #555;
+  }
+
+  .slider__nav:disabled {
+    background: #222;
+    color: #666;
+    border-color: #444;
+  }
+
+  .slider__lightbox-backdrop {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .slider__lightbox-close {
+    background: #333;
+    color: #c5c5c5;
+    border-color: #555;
+  }
+
+  .slider__lightbox-caption {
+    color: #aaa;
+  }
+
+  .slider__frame {
+    background: #2a2a2a;
+  }
+}
