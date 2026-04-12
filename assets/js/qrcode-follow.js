@@ -1,83 +1,79 @@
-;(function () {
+;(function() {
   'use strict';
 
   const img = document.getElementById('qrcode-cursor-follow');
-  const content = document.querySelector('.wrap');
-  const title = document.querySelector('.site-title');
+  if (!img) return;
+
+  const header = document.querySelector('.site-header');
   const footer = document.querySelector('.site-footer');
-  if (!img || !content || !title || !footer) return;
 
-  const GAP = 10;
-  let mode = null;
-  let lastEvent = null;
+  if (!header || !footer) return;
 
-  function sizePx() {
-    const w = content.getBoundingClientRect().width;
-    return Math.max(48, Math.round(w * 0.3));
+  let isLoaded = false;
+  let currentTargetElement = null; // To track if mouse is over header or footer
+
+  // --- Start Image Preloading ---
+  const imgSrc = img.getAttribute('data-src');
+  if (imgSrc) {
+    img.src = imgSrc;
+    img.onload = () => {
+      isLoaded = true;
+      img.onerror = null;
+    };
+    img.onerror = () => {
+      const fallback = img.getAttribute('data-qrcode-fallback');
+      if (fallback) {
+        img.src = fallback;
+      }
+    };
   }
+  // --- End Image Preloading ---
 
-  function position(e) {
-    if (!e || !mode) return;
-    const s = sizePx();
-    img.style.width = s + 'px';
-    img.style.height = s + 'px';
 
-    let left;
-    let top;
-    if (mode === 'br') {
-      left = e.clientX + GAP;
-      top = e.clientY + GAP;
-    } else {
-      left = e.clientX + GAP;
-      top = e.clientY - s - GAP;
+  function show() {
+    if (img.hidden) {
+      img.hidden = false;
     }
-
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    left = Math.max(8, Math.min(left, vw - s - 8));
-    top = Math.max(8, Math.min(top, vh - s - 8));
-    img.style.left = left + 'px';
-    img.style.top = top + 'px';
-  }
-
-  function show(m, e) {
-    mode = m;
-    img.hidden = false;
-    img.setAttribute('aria-hidden', 'false');
-    lastEvent = e;
-    position(e);
   }
 
   function hide() {
-    mode = null;
-    lastEvent = null;
-    img.hidden = true;
-    img.setAttribute('aria-hidden', 'true');
+    if (!img.hidden) {
+      img.hidden = true;
+    }
   }
 
-  function onMove(e) {
-    if (!mode) return;
-    lastEvent = e;
-    position(e);
+  function handleMouseEnter(event) {
+    currentTargetElement = event.currentTarget;
+    show();
   }
 
-  title.addEventListener('mouseenter', function (e) {
-    show('br', e);
-  });
-  title.addEventListener('mouseleave', hide);
-  title.addEventListener('mousemove', onMove);
+  function handleMouseLeave() {
+    currentTargetElement = null;
+    hide();
+  }
 
-  footer.addEventListener('mouseenter', function (e) {
-    show('tr', e);
-  });
-  footer.addEventListener('mouseleave', hide);
-  footer.addEventListener('mousemove', onMove);
+  function follow(event) {
+    if (!isLoaded || !currentTargetElement) return;
 
-  window.addEventListener(
-    'resize',
-    function () {
-      if (mode && lastEvent) position(lastEvent);
-    },
-    { passive: true }
-  );
+    const x = event.pageX;
+    const y = event.pageY;
+    const offset = 15; // Visual offset from the cursor
+
+    if (currentTargetElement === header) {
+      // Over header: position QR code to the bottom-right of the cursor
+      img.style.transform = `translate(${x + offset}px, ${y + offset}px)`;
+    } else if (currentTargetElement === footer) {
+      // Over footer: position QR code to the top-right of the cursor
+      const imgHeight = img.offsetHeight;
+      img.style.transform = `translate(${x + offset}px, ${y - imgHeight - offset}px)`;
+    }
+  }
+
+  header.addEventListener('mouseenter', handleMouseEnter);
+  header.addEventListener('mouseleave', handleMouseLeave);
+  footer.addEventListener('mouseenter', handleMouseEnter);
+  footer.addEventListener('mouseleave', handleMouseLeave);
+
+  document.body.addEventListener('mousemove', follow);
+
 })();
