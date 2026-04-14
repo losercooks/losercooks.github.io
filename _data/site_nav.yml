@@ -32,6 +32,8 @@ groups:
         url: https://github.com/losercooks
       - title: Google
         url: https://www.google.com/
+      - title: idx  
+        url: https://idx.google.com/
       - title: AI studio
         url: https://aistudio.google.com/
       - title: ChatGPT
