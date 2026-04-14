@@ -129,8 +129,15 @@
         },
         render(q) {
             const query = (q || '').toLowerCase().trim();
-            // 如果有查询词，则过滤；否则显示最新的 20 条。最多显示 50 条结果。
-            const results = (query ? state.index.filter(e => e.titleLower.includes(query)) : state.index.slice(0, 20)).slice(0, 50);
+            let results;
+
+            // 根据是否有查询词来过滤或获取最新文章
+            if (query) {
+                results = state.index.filter(e => e.titleLower.includes(query)).slice(0, 50);
+            } else {
+                results = state.index.slice(0, 20);
+            }
+            
             state.activeIndex = results.length ? 0 : -1; // 重置高亮索引
             
             // 生成结果列表的 HTML
@@ -138,8 +145,15 @@
                 `<li class="modal--search__item ${i === 0 ? 'marked' : ''}" role="option" data-url="${entry.url}" id="search-opt-${i}">${entry.title}</li>`
             ).join('');
             
-            // 更新结果计数
-            countEl.textContent = results.length ? `${query ? results.length : '最新'} ${results.length} 条结果` : (query ? '无结果' : '');
+            // 更新结果计数（修复了重复数字的 bug 并提高了可读性）
+            let countText = '';
+            if (query) {
+                countText = results.length ? `${results.length} 条结果` : '无结果';
+            } else {
+                countText = results.length ? `最新 ${results.length} 条结果` : '';
+            }
+            countEl.textContent = countText;
+
             // 根据是否有结果来决定是否显示下拉区域的背景
             searchPanel.classList.toggle('has-dropdown', results.length > 0 || (query && results.length === 0));
             // 更新 ARIA 属性，便于屏幕阅读器

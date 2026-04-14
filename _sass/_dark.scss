@@ -140,12 +140,12 @@ body.dark-mode {
     background: $dark-card-bg-alt;
   }
 
-    // --- 文章元信息（分类、日期） | Post Meta ---
-    .post-meta,
-    .post-meta time,
-    .post-meta a {
-      color: $dark-meta-text; // 使用为“元信息”定义的颜色变量
-      opacity: 1;            // 必须重置透明度，以应用上面的纯色
-    }
+  // --- 文章元信息（分类、日期） | Post Meta ---
+  .post-meta,
+  .post-meta time,
+  .post-meta a {
+    color: $dark-meta-text; // 使用为“元信息”定义的颜色变量
+    opacity: 1;            // 必须重置透明度，以应用上面的纯色
+  }
   
 }
