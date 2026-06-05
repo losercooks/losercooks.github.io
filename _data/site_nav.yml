@@ -25,6 +25,8 @@ groups:
         url: https://www.youtube.com/
       - title: Vimeo
         url: https://vimeo.com/
+      - title: 中国版权保护中心
+        url: https://www.ccopyright.com.cn/
 
   - title: 开发
     links:
